@@ -1,0 +1,12 @@
+# master ansible_ssh_host=192.168.0.2
+# node-1 ansible_ssh_host=192.168.0.3
+# node-2 ansible_ssh_host=192.168.0.4
+# node-3 ansible_ssh_host=192.168.0.5
+
+[prometheuses]
+# master
+
+[node_exporters]
+# node-1
+# node-2
+# node-3
