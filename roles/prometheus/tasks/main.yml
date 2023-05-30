@@ -1,19 +1,19 @@
 ---
-- name: "Create user {{ prometheus.user }}"
+- name: "Create user {{ prometheus_user }}"
   ansible.builtin.user:
-    name: "{{ prometheus.user }}"
+    name: "{{ prometheus_user }}"
     comment: "Prometheus service user"
     shell: "/bin/bash"
 
-- name: "Download Prometheus binary (v{{ prometheus.version }})"
+- name: "Download Prometheus binary (v{{ prometheus_version }})"
   ansible.builtin.unarchive:
-    src: "https://github.com/prometheus/prometheus/releases/download/v{{prometheus.version}}/prometheus-{{prometheus.version}}.linux-{{ prometheus.architecture }}.tar.gz"
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ prometheus_architecture }}.tar.gz"
     dest: "/tmp"
     remote_src: true
 
 - name: "Copy binary files"
   ansible.builtin.copy:
-    src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/{{ item }}"
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ prometheus_architecture }}/{{ item }}"
     dest: "/usr/local/bin/"
     mode: "0755"
     owner: "root"
@@ -31,19 +31,19 @@
     group: "{{ item.user }}"
     mode: "0755"
   loop:
-    - path: "{{ prometheus.config_path | dirname }}"
-      user: "{{ prometheus.user }}"
-    - path: "{{ prometheus.tsdb_path | dirname }}"
-      user: "{{ prometheus.user }}"
+    - path: "{{ prometheus_config_path | dirname }}"
+      user: "{{ prometheus_user }}"
+    - path: "{{ prometheus_tsdb_path | dirname }}"
+      user: "{{ prometheus_user }}"
     - path: "/etc/sysconfig"
       user: "root"
 
 - name: "Copy configuration file"
   ansible.builtin.copy:
-    src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/prometheus.yml"
-    dest: "{{ prometheus.config_path }}"
-    owner: "{{ prometheus.user }}"
-    group: "{{ prometheus.user }}"
+    src: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ prometheus_architecture }}/prometheus.yml"
+    dest: "{{ prometheus_config_path }}"
+    owner: "{{ prometheus_user }}"
+    group: "{{ prometheus_user }}"
     mode: "0644"
   notify: "Restart prometheus"
 
@@ -56,7 +56,7 @@
   loop:
     - src: "sysconfig.j2"
       dest: "/etc/sysconfig/prometheus"
-      user: "{{ prometheus.user }}"
+      user: "{{ prometheus_user }}"
     - src: "service.j2"
       dest: "/usr/lib/systemd/system/prometheus.service"
       user: "root"

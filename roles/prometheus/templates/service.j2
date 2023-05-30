@@ -1,11 +1,11 @@
 [Unit]
-Description=Prometheus Server ver. {{ prometheus.version }}
+Description=Prometheus Server ver. {{ prometheus_version }}
 Documentation=https://github.com/prometheus/prometheus
 
 [Service]
 Restart=always
-User={{ prometheus.user }}
-Group={{ prometheus.user }}
+User={{ prometheus_user }}
+Group={{ prometheus_user }}
 EnvironmentFile=/etc/sysconfig/prometheus
 ExecStart=/usr/local/bin/prometheus $OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
