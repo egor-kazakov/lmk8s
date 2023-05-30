@@ -16,6 +16,8 @@
     src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/{{ item }}"
     dest: "/usr/local/bin/"
     mode: "0755"
+    owner: "root"
+    group: "root"
   loop:
     - prometheus
     - promtool
