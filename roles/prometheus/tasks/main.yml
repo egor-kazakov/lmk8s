@@ -21,6 +21,7 @@
   loop:
     - prometheus
     - promtool
+  notify: "Restart prometheus"
 
 - name: "Make needs directories"
   ansible.builtin.file:
