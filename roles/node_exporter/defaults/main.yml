@@ -1,3 +1,7 @@
 node_exporter:
+  # Версия и архитектура
   version: "1.6.0"
   architecture: "amd64"
+
+  # Параметры запуска
+  options: ""
