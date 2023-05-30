@@ -16,7 +16,7 @@
 ```
 pip3 install -r requirements.txt
 ```
-# Установка
+### Установка
 Необходимо запустить плейбук командой:
 ```
 ansible-playbook install.yml
