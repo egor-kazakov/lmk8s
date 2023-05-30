@@ -22,12 +22,12 @@ pip3 install -r requirements.txt
 ansible-playbook install.yml
 ```
 
-**Допустимые Теги:**
+**Допустимые теги:**
 ```
 ansible-playbook install.yml -t prometheus
 ansible-playbook install.yml -t node_exporter
 ```
 
 ## Доступы
-- Prometheus доступен по ссылке http://localhost:9090
+- Prometheus доступен по ссылке http://localhost:9090/
 - Node Exporter доступен по ссылке http://localhost:9100/
