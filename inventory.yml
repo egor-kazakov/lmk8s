@@ -1,4 +1,13 @@
 all:
-  hosts:
-    localhost:
-      ansible_connection: local
+  children:
+    monitor:
+      hosts:
+        localhost:
+          ansible_connection: local
+    nodes:
+      hosts:
+        localhost:
+          ansible_connection: local
+        # node-1 ansible_ssh_host=192.168.1.3
+        # node-2 ansible_ssh_host=192.168.1.4
+        # node-3 ansible_ssh_host=192.168.1.5

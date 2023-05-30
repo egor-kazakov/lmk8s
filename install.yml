@@ -1,8 +1,14 @@
 ---
-- name: "lmk8s"
-  hosts: all
+- name: "Install Prometheus"
+  hosts: "monitor"
   become: true
 
   roles:
   - prometheus
+
+- name: "InstallNode Exporter"
+  hosts: "nodes"
+  become: true
+
+  roles:
   - node_exporter
