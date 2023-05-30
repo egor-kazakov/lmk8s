@@ -24,3 +24,4 @@ ansible-playbook install.yml
 
 ## Доступы
 Prometheus доступен по ссылке http://localhost:9090
+Node Exporter доступен по ссылке http://localhost:9100/
