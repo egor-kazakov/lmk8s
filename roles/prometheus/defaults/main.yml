@@ -1,4 +1,13 @@
 prometheus:
-  user: "prometheus"
+  # Версия и архитектура 
   version: "2.44.0"
   architecture: "amd64"
+
+  # Запуск от имени пользователя
+  user: "prometheus"
+
+  # Параметры запуска
+  config_path: "/etc/prometheus/prometheus.yml"
+  tsdb_path: "/var/lib/prometheus/"
+  other_options: ""
+

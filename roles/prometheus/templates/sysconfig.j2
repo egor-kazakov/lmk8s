@@ -1,2 +1,1 @@
-OPTIONS="--config.file=/etc/prometheus/prometheus.yml \
---storage.tsdb.path=/var/lib/prometheus/"
+OPTIONS="--config.file={{ prometheus.config_path }} --storage.tsdb.path={{ prometheus.tsdb_path }} {{ prometheus.other_options }}"

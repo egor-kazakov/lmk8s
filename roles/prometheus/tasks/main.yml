@@ -31,17 +31,17 @@
     group: "{{ item.user }}"
     mode: "0755"
   loop:
-    - path: /etc/prometheus
+    - path: "{{ prometheus.config_path | dirname }}"
       user: "{{ prometheus.user }}"
-    - path: /var/lib/prometheus
+    - path: "{{ prometheus.tsdb_path | dirname }}"
       user: "{{ prometheus.user }}"
     - path: "/etc/sysconfig"
       user: "root"
 
-- name: "Copy configuration file prometheus.yml"
+- name: "Copy configuration file"
   ansible.builtin.copy:
     src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/prometheus.yml"
-    dest: "/etc/prometheus/"
+    dest: "{{ prometheus.config_path }}"
     owner: "{{ prometheus.user }}"
     group: "{{ prometheus.user }}"
     mode: "0644"
