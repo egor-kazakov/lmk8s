@@ -1,13 +1,13 @@
 ---
-- name: "Download Node Exporter binary (v{{ node_exporter.version }})"
+- name: "Download Node Exporter binary (v{{ node_exporter_version }})"
   ansible.builtin.unarchive:
-    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter.version }}/node_exporter-{{ node_exporter.version }}.linux-{{ node_exporter.architecture }}.tar.gz"
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-{{ node_exporter_architecture }}.tar.gz"
     dest: "/tmp"
     remote_src: true
 
 - name: "Copy binary file"
   ansible.builtin.copy:
-    src: "/tmp/node_exporter-{{ node_exporter.version }}.linux-{{ node_exporter.architecture }}/node_exporter"
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-{{ node_exporter_architecture }}/node_exporter"
     dest: "/usr/local/bin/"
     owner: "root"
     group: "root"
