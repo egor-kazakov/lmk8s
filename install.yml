@@ -5,3 +5,4 @@
 
   roles:
   - prometheus
+  - node_exporter
