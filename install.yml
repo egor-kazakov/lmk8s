@@ -1,14 +1,8 @@
 ---
-- name: "Install Prometheus"
-  hosts: "monitor"
-  become: true
+- name: "Include prometheus.yml"
+  import_playbook: playbooks/prometheus.yml
+  tags: [prometheus]
 
-  roles:
-  - prometheus
-
-- name: "InstallNode Exporter"
-  hosts: "nodes"
-  become: true
-
-  roles:
-  - node_exporter
+- name: "Include node_exporter.yml"
+  import_playbook: playbooks/node_exporter.yml
+  tags: [node_exporter]
