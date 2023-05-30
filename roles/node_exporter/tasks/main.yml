@@ -1,1 +1,39 @@
 ---
+- name: "Download Node Exporter binary (v{{ node_exporter.version }})"
+  ansible.builtin.unarchive:
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter.version }}/node_exporter-{{ node_exporter.version }}.linux-{{ node_exporter.architecture }}.tar.gz"
+    dest: "/tmp"
+    remote_src: true
+
+- name: "Copy binary file"
+  ansible.builtin.copy:
+    src: "/tmp/node_exporter-{{ node_exporter.version }}.linux-{{ node_exporter.architecture }}/node_exporter"
+    dest: "/usr/local/bin/"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+  notify: "Restart node_exporter"
+
+- name: "Make needs directories"
+  ansible.builtin.file:
+    path: "/etc/sysconfig"
+    state: "directory"
+    owner: "root"
+    group: "root"
+    mode: "0755"
+
+- name: "Create service Node Exporter"
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "root"
+    group: "root"
+  loop:
+    - src: "sysconfig.j2"
+      dest: "/etc/sysconfig/node_exporter"
+    - src: "service.j2"
+      dest: "/usr/lib/systemd/system/node_exporter.service"
+  notify: "Restart node_exporter"
+
+- name: "Restart node_exporter"
+  ansible.builtin.meta: flush_handlers
