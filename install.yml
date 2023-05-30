@@ -1,0 +1,7 @@
+---
+- name: "lmk8s"
+  hosts: all
+  become: true
+
+  roles:
+  - prometheus

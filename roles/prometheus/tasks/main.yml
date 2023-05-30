@@ -1,0 +1,61 @@
+---
+- name: "Create user {{ prometheus.user }}"
+  ansible.builtin.user:
+    name: "{{ prometheus.user }}"
+    comment: "Prometheus service user"
+    shell: "/bin/bash"
+
+- name: "Download Prometheus binary (v{{ prometheus.version }})"
+  ansible.builtin.unarchive:
+    src: "https://github.com/prometheus/prometheus/releases/download/v{{prometheus.version}}/prometheus-{{prometheus.version}}.linux-{{ prometheus.architecture }}.tar.gz"
+    dest: "/tmp"
+    remote_src: true
+
+- name: "Copy binary files"
+  ansible.builtin.copy:
+    src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/{{ item }}"
+    dest: "/usr/local/bin/"
+    mode: "0755"
+  loop:
+    - prometheus
+    - promtool
+
+- name: "Make needs directories"
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: "directory"
+    owner: "{{ item.user }}"
+    group: "{{ item.user }}"
+    mode: "0755"
+  loop:
+    - path: /etc/prometheus
+      user: "{{ prometheus.user }}"
+    - path: /var/lib/prometheus
+      user: "{{ prometheus.user }}"
+    - path: "/etc/sysconfig"
+      user: "root"
+
+- name: "Copy configuration file prometheus.yml"
+  ansible.builtin.copy:
+    src: "/tmp/prometheus-{{ prometheus.version }}.linux-{{ prometheus.architecture }}/prometheus.yml"
+    dest: "/etc/prometheus/"
+    owner: "{{ prometheus.user }}"
+    group: "{{ prometheus.user }}"
+    mode: "0644"
+  notify: "Restart prometheus"
+
+- name: "Create service Prometheus"
+  ansible.builtin.template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: "sysconfig.j2"
+      dest: "/etc/sysconfig/prometheus"
+      user: "{{ prometheus.user }}"
+    - src: "service.j2"
+      dest: "/usr/lib/systemd/system/prometheus.service"
+      user: "root"
+  notify: "Restart prometheus"
+
+- name: "Restart prometheus"
+  ansible.builtin.meta: flush_handlers
