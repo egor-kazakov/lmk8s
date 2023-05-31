@@ -27,3 +27,6 @@ scrape_configs:
 
     static_configs:
       - targets: ["localhost:9090"]
+{% for host in groups['node_exporters'] %}
+      - targets: ["{{ hostvars[host]['ip'] | default(hostvars[host]['ansible_ssh_host']) }}:9100"]
+{% endfor %}
