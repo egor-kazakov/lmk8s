@@ -9,4 +9,4 @@
 
 - name: "Include elastic.yml"
   import_playbook: playbooks/elastic.yml
-  tags: [elasitc]
+  tags: [elastic]
