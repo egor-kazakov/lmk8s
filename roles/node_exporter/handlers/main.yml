@@ -3,3 +3,4 @@
   ansible.builtin.service:
     name: "node_exporter"
     state: "reloaded"
+    enabled: true
