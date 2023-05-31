@@ -1,5 +1,5 @@
 ---
-- name: "Install Prometheus"
+- name: "Prometheus"
   hosts: "prometheuses"
   become: true
   roles: [ role: prometheus ]
