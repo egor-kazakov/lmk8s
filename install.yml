@@ -6,3 +6,7 @@
 - name: "Include node_exporter.yml"
   import_playbook: playbooks/node_exporter.yml
   tags: [node_exporter]
+
+- name: "Include elastic.yml"
+  import_playbook: playbooks/elastic.yml
+  tags: [elasitc]
