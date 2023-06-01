@@ -36,6 +36,7 @@ ansible-playbook install.yml
 ansible-playbook install.yml -t prometheus
 ansible-playbook install.yml -t node_exporter
 ansible-playbook install.yml -t elastic
+ansible-playbook install.yml -t fluentbit
 ```
 
 ## Доступы

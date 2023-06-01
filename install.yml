@@ -10,3 +10,7 @@
 - name: "Include elastic.yml"
   import_playbook: playbooks/elastic.yml
   tags: [elastic]
+
+- name: "Include fluentbit.yml"
+  import_playbook: playbooks/fluentbit.yml
+  tags: [fluentbit]

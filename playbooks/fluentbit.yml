@@ -1,0 +1,5 @@
+---
+- name: "Fluent-bit"
+  hosts: "fluentbit"
+  become: true
+  roles: [ role: fluentbit ]
