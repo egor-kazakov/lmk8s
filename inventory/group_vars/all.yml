@@ -1,0 +1,26 @@
+###########################
+#   Prometheus variables
+###########################
+
+# Версия и архитектура (Подробнее: https://github.com/prometheus/prometheus/releases)
+prometheus_version: "2.44.0"
+prometheus_architecture: "amd64"
+
+# Запуск от имени пользователя
+prometheus_user: "prometheus"
+
+# Параметры запуска
+prometheus_config_path: "/etc/prometheus/prometheus.yml"
+prometheus_tsdb_path: "/var/lib/prometheus/"
+prometheus_other_options: ""
+
+###########################
+#   NodeExporter varibles
+###########################
+
+# Версия и архитектура (Подробнее: https://github.com/prometheus/node_exporter/releases)
+node_exporter_version: "1.6.0"
+node_exporter_architecture: "amd64"
+
+# Параметры запуска
+node_exporter_options: ""
