@@ -1,8 +1,8 @@
-# master  ansible_ssh_host=192.168.0.2 ip=10.0.0.2
-# node-1  ansible_ssh_host=192.168.0.3 ip=10.0.0.3
-# node-2  ansible_ssh_host=192.168.0.4 ip=10.0.0.4
-# node-3  ansible_ssh_host=192.168.0.5 ip=10.0.0.5
-# efk     ansible_ssh_host=192.168.0.6 ip=10.0.0.6
+# master   ansible_ssh_host=192.168.0.2 ip=10.0.0.2
+# node-1   ansible_ssh_host=192.168.0.3 ip=10.0.0.3
+# node-2   ansible_ssh_host=192.168.0.4 ip=10.0.0.4
+# node-3   ansible_ssh_host=192.168.0.5 ip=10.0.0.5
+# elastic  ansible_ssh_host=192.168.0.6 ip=10.0.0.6
 
 [prometheuses]
 # master
@@ -14,3 +14,8 @@
 
 [elastic]
 # efk
+
+[fluentbit]
+# node-1
+# bode-2
+# node-3
