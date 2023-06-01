@@ -1,0 +1,2 @@
+roles/elastic/files/elasticsearch-*
+roles/elastic/files/kibana-*

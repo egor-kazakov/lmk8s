@@ -1,1 +1,18 @@
 ---
+- name: "Copy archives"
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: "{{ elastic_source_file }}"
+      dest: "/tmp/elasticsearch.tar.gz"
+    - src: "{{ kibana_source_file }}"
+      dest: "/tmp/kibana.tar.gz"
+    
+- name: "Extract distrib"
+  ansible.builtin.unarchive:
+    src: "{{ item }}"
+    dest: "/tmp"
+  loop:
+    - "/tmp/elasticsearch.tar.gz"
+    - "/tmp/kibana.tar.gz"
