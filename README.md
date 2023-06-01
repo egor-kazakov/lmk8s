@@ -23,7 +23,7 @@ Elasticsearch требователен к железу.
 ```
 pip3 install -r requirements.txt
 ```
-Перед установкой ElasticSearch/Kibana необходимо скачать *.deb пакеты и указать пути к ним в **group_vars**
+Перед установкой ElasticSearch/Kibana необходимо скачать *.deb и/или *.rpm пакеты и указать пути к ним в **group_vars**
 
 ### Запуск плейбука
 Плейбук необходимо запустить командой:
@@ -41,3 +41,5 @@ ansible-playbook install.yml -t elastic
 ## Доступы
 - Prometheus доступен по ссылке http://localhost:9090/
 - Node Exporter доступен по ссылке http://localhost:9100/
+- ElasticSearch доступен по ссылке http://localhost:9200/
+- Kibana доступен по ссылке http://localhost:5601/
