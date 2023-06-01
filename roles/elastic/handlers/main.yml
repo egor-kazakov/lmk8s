@@ -1,0 +1,12 @@
+---
+- name: "Restart elasticsearch"
+  ansible.builtin.service:
+    name: "elasticsearch"
+    state: "restarted"
+    enabled: true
+
+- name: "Restart kibana"
+  ansible.builtin.service:
+    name: "kibana"
+    state: "restarted"
+    enabled: true

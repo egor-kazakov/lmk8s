@@ -30,9 +30,12 @@ node_exporter_options: ""
 ###########################
 
 # Пути к артефактам (архивам) на локальном хосте, т.к. репозитории закрыты в РФ
-# Необходимо их скачать: 
+# Необходимо скачать пакеты deb/rpm: 
 #  - https://www.elastic.co/downloads/elasticsearch
 #  - https://www.elastic.co/downloads/kibana
 # разместить на хосте и указать путь к ним (абсолютный или относительный):
-elastic_source_file: "elasticsearch-8.8.0-linux-x86_64.tar.gz"
-kibana_source_file: "kibana-8.8.0-linux-x86_64.tar.gz"
+elastic_deb_file: "elasticsearch-8.8.0-amd64.deb"
+kibana_deb_file: "kibana-8.8.0-amd64.deb"
+
+elastic_rpm_file: "elasticsearch-8.8.0-amd64.rpm"
+kibana_rpm_file: "kibana-8.8.0-amd64.rpm"

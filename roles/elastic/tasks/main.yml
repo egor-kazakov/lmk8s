@@ -1,18 +1,11 @@
 ---
-- name: "Copy archives"
-  ansible.builtin.copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - src: "{{ elastic_source_file }}"
-      dest: "/tmp/elasticsearch.tar.gz"
-    - src: "{{ kibana_source_file }}"
-      dest: "/tmp/kibana.tar.gz"
-    
-- name: "Extract distrib"
-  ansible.builtin.unarchive:
-    src: "{{ item }}"
-    dest: "/tmp"
-  loop:
-    - "/tmp/elasticsearch.tar.gz"
-    - "/tmp/kibana.tar.gz"
+- name: "Install for Debian OS"
+  include_tasks: install-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: "Install for RedHat OS"
+  include_tasks: install-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: "Install for RedHat OS"
+  import_tasks: configure.yml

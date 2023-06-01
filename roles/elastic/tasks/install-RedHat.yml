@@ -1,0 +1,20 @@
+---
+- name: "Copy packages"
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - src: "{{ elastic_rpm_file }}"
+      dest: "/tmp/{{ elastic_rpm_file | basename}}"
+    - src: "{{ kibana_rpm_file }}"
+      dest: "/tmp/{{ kibana_rpm_file | basename}}"
+
+- name: "Install ElasticSearch"
+  ansible.builtin.yum:
+    name: "/tmp/{{ elastic_rpm_file | basename}}"
+    state: "present"
+
+- name: "Install Kibana"
+  ansible.builtin.yum:
+    name: "/tmp/{{ kibana_rpm_file | basename}}"
+    state: "present"
