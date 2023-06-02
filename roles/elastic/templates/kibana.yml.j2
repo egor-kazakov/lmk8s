@@ -23,7 +23,7 @@ server.host: "0.0.0.0"
 
 # Specifies the public URL at which Kibana is available for end users. If
 # `server.basePath` is configured this URL should end with the same basePath.
-#server.publicBaseUrl: ""
+server.publicBaseUrl: "http://{{ ip | default(ansible_ssh_host) }}"
 
 # The maximum payload size in bytes for incoming server requests.
 #server.maxPayload: 1048576
@@ -89,7 +89,7 @@ elasticsearch.hosts: ["http://localhost:9200"]
 
 # Enables you to specify a path to the PEM file for the certificate
 # authority for your Elasticsearch instance.
-elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/certs/http_ca.crt" ]
+#elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/certs/http_ca.crt" ]
 
 # To disregard the validity of SSL certificates, change this setting's value to 'none'.
 #elasticsearch.ssl.verificationMode: full
