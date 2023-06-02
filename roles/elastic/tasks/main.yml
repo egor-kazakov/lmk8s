@@ -9,3 +9,6 @@
 
 - name: "Install for RedHat OS"
   import_tasks: configure.yml
+
+- name: "Restart Services"
+  ansible.builtin.meta: flush_handlers
