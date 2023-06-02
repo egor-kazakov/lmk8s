@@ -1,7 +1,8 @@
 ---
 - name: "Add repository"
   ansible.builtin.yum_repository:
-    name: "Fluent Bit"
+    name: "Fluent-Bit"
+    description: "Fluent-Bit repository"
     baseurl: "https://packages.fluentbit.io/centos/$releasever/"
     gpgkey: "https://packages.fluentbit.io/fluentbit.key"
     gpgcheck: true
