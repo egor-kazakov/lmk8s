@@ -48,7 +48,7 @@
   notify: "Restart prometheus"
   tags: [node_exporter]
 
-- name: "Create config and service Prometheus"
+- name: "Create service Prometheus"
   ansible.builtin.template:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
