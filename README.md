@@ -39,7 +39,11 @@ apt install -y ansible
 # Через YUM
 yum install -y ansible
 ```
-Перед установкой **ElasticSearch/Kibana** необходимо скачать *.deb и/или *.rpm пакеты и указать пути к ним в **group_vars** *(Ресурс заблокирован в РФ)*
+**ВАЖНО!!!** Перед установкой **ElasticSearch/Kibana** необходимо скачать *.deb и/или *.rpm пакеты и указать пути к ним в **group_vars** *(Ресурс заблокирован в РФ)*
+```
+https://www.elastic.co/downloads/elasticsearch
+https://www.elastic.co/downloads/kibana
+```
 
 ### Запуск плейбука
 Плейбук необходимо запустить командой:
