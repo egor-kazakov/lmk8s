@@ -37,5 +37,5 @@ node_exporter_options: ""
 elastic_deb_file: "elasticsearch-8.8.0-amd64.deb"
 kibana_deb_file: "kibana-8.8.0-amd64.deb"
 
-elastic_rpm_file: "elasticsearch-8.8.0-amd64.rpm"
-kibana_rpm_file: "kibana-8.8.0-amd64.rpm"
+elastic_rpm_file: "elasticsearch-8.8.0-x86_64.rpm"
+kibana_rpm_file: "kibana-8.8.0-x86_64.rpm"
