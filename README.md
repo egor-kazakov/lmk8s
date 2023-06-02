@@ -31,6 +31,7 @@ yum install -y python3-pip
 Установите ansible >= 2.11 (требуется для работы модуля **ansible.builtin.meta**)
 ```
 # Через PIP
+pip install -r requirements.txt
 pip3 install -r requirements.txt
 
 # Через APT
