@@ -1,1 +1,17 @@
 ---
+- name: "Install for Debian OS"
+  include_tasks: install-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: "Install for RedHat OS"
+  include_tasks: install-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: "Copy config"
+  ansible.builtin.template:
+    src: "fluent-bit.conf.j2"
+    dest: "/etc/fluent-bit/fluent-bit.conf"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  notify: "Restart fluent-bit"
