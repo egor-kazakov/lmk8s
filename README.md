@@ -19,11 +19,27 @@ Elasticsearch требователен к железу.
 Здесь описан способ установки Prometheus и стека EFK
 
 ### Подготовка
-Необходимо установить ansible => 2.11 (требуется для работы модуля **ansible.builtin.meta**)
+Установите pip3 из репозитория:
 ```
+# Debian/Ubuntu
+apt install -y python3-pip
+
+# RedHat/CentOS
+yum install -y python3-pip
+```
+
+Установите ansible >= 2.11 (требуется для работы модуля **ansible.builtin.meta**)
+```
+# Через PIP
 pip3 install -r requirements.txt
+
+# Через APT
+apt install -y ansible
+
+# Через YUM
+yum install -y ansible
 ```
-Перед установкой ElasticSearch/Kibana необходимо скачать *.deb и/или *.rpm пакеты и указать пути к ним в **group_vars**
+Перед установкой **ElasticSearch/Kibana** необходимо скачать *.deb и/или *.rpm пакеты и указать пути к ним в **group_vars** *(Ресурс заблокирован в РФ)*
 
 ### Запуск плейбука
 Плейбук необходимо запустить командой:
